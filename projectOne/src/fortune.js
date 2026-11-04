@@ -19,4 +19,14 @@ export const FORTUNES = [
         text: "Great fortune awaits you, right after you finish that task you're avoiding.",
         category: "Destiny",
     },
+    {
+        id: 5,
+        text: "potty kroge aaj toh ^^",
+        category: "chaos",
+    },
+    {
+        id: 6,
+        text: "u will finish your assignment today",
+        category: "academics",
+    }
 ];
