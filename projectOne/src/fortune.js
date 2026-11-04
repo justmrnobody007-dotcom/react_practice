@@ -22,11 +22,11 @@ export const FORTUNES = [
     {
         id: 5,
         text: "potty kroge aaj toh ^^",
-        category: "chaos",
+        category: "Chaos",
     },
     {
         id: 6,
         text: "u will finish your assignment today",
-        category: "academics",
+        category: "Academics",
     }
 ];
