@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FORTUNES } from './data/fortunes';
+import { FORTUNES } from "./fortune.js";
 
 function App() {
   // 1. Initialize state with the first fortune in our array
