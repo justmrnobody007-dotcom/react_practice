@@ -1,217 +1,144 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
-
-/* Full page dark purple mystical background */
-body {
-  margin: 0;
+/* === THEATRE STAGE & STRIPED BACKDROP (Image 1) === */
+.theatre-stage {
+  position: relative;
+  width: 100vw;
   min-height: 100vh;
-  background: radial-gradient(circle at 50% 10%, #2e1053 0%, #150727 50%, #080210 100%);
-  color: #f1e6ff;
-  font-family: 'Cinzel', serif;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
+  /* Vintage dark purple vertical carnival stripes behind the curtains */
+  background: repeating-linear-gradient(90deg,
+      #140624 0px,
+      #140624 48px,
+      #1f0b38 48px,
+      #1f0b38 96px);
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.9);
 }
 
-.oracle-wrapper {
+/* === TOP DRAPED VALANCE === */
+.curtain-valance {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 650px;
-  padding: 40px 20px;
+  height: 110px;
+  display: flex;
+  z-index: 30;
+  pointer-events: none;
+  border-top: 10px solid #3b3345;
+  /* Vintage stone arch trim */
+}
+
+.valance-drape {
+  flex: 1;
+  height: 100%;
+  background: repeating-linear-gradient(90deg,
+      #3b0d54 0%,
+      #5b187b 8%,
+      #240636 16%);
+  border-radius: 0 0 50% 50%;
+  border-bottom: 4px solid #a855f7;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.8);
+}
+
+.center-drape {
+  height: 85%;
+  position: relative;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 }
 
-.oracle-container {
-  width: 100%;
+.peeking-eye {
+  font-size: 2rem;
+  transform: translateY(18px);
+  filter: drop-shadow(0 0 8px #e9d5ff);
+}
+
+/* === LEFT & RIGHT VELVET CURTAINS === */
+.curtain-panel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 52vw;
+  z-index: 20;
+  /* Pleated purple velvet texture using repeating gradients */
+  background: repeating-linear-gradient(90deg,
+      #2a0845 0px,
+      #4c1273 30px,
+      #681b99 55px,
+      #370b54 85px,
+      #1d042e 110px);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.95);
+  transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.curtain-left {
+  left: 0;
+  border-right: 4px solid #c084fc;
+}
+
+.curtain-right {
+  right: 0;
+  border-left: 4px solid #c084fc;
+}
+
+/* When .curtains-open is added, pull curtains to the sides like Image 1 */
+.theatre-stage.curtains-open .curtain-left {
+  transform: translateX(-82%) rotate(-3deg);
+  border-bottom-right-radius: 120px;
+}
+
+.theatre-stage.curtains-open .curtain-right {
+  transform: translateX(82%) rotate(3deg);
+  border-bottom-left-radius: 120px;
+}
+
+/* === HERO OVERLAY BEFORE CURTAINS OPEN === */
+.curtain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  text-align: center;
   gap: 24px;
+  background: radial-gradient(circle, rgba(16, 4, 28, 0.55) 0%, rgba(0, 0, 0, 0.8) 100%);
+  padding: 20px;
+  text-align: center;
 }
 
-/* Header */
-.crystal-ball {
-  font-size: 50px;
-  filter: drop-shadow(0 0 15px #a855f7);
-  animation: float 3s ease-in-out infinite;
+.hero-curtain-title {
+  font-size: 3rem;
+  color: #f3e8ff;
+  text-shadow: 0 0 25px #a855f7, 0 4px 10px #000;
+  letter-spacing: 4px;
+  margin: 0;
 }
 
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.oracle-title {
-  font-size: 2.2rem;
+.enter-stage-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
   letter-spacing: 2px;
-  color: #e9d5ff;
-  text-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
-  margin: 10px 0 6px 0;
-}
-
-.oracle-subtitle {
-  font-family: 'Crimson Pro', serif;
-  font-style: italic;
-  font-size: 1.15rem;
-  color: #c084fc;
-  margin: 0;
-}
-
-/* Fortune Card */
-.fortune-card {
-  width: 100%;
-  box-sizing: border-box;
-  background: rgba(26, 11, 46, 0.75);
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  border-radius: 16px;
-  padding: 30px 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(147, 51, 234, 0.2);
-  backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-}
-
-.category-badge {
-  font-size: 0.75rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  background: rgba(168, 85, 247, 0.2);
-  border: 1px solid #a855f7;
-  color: #d8b4fe;
-  padding: 4px 12px;
-  border-radius: 20px;
-}
-
-.fortune-text {
-  font-family: 'Crimson Pro', serif;
-  font-size: 1.5rem;
-  font-style: italic;
-  line-height: 1.5;
+  padding: 16px 38px;
+  background: linear-gradient(135deg, #581c87, #9333ea);
   color: #faf5ff;
-  margin: 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-/* Buttons */
-.consult-btn {
-  font-family: 'Cinzel', serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  padding: 14px 32px;
-  background: linear-gradient(135deg, #7e22ce, #9333ea);
-  color: #fff;
-  border: 1px solid #c084fc;
-  border-radius: 30px;
+  border: 2px solid #e9d5ff;
+  border-radius: 40px;
   cursor: pointer;
-  box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
-  transition: all 0.25s ease;
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.8);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.consult-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(168, 85, 247, 0.85);
-  background: linear-gradient(135deg, #9333ea, #a855f7);
+.enter-stage-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 45px rgba(216, 180, 254, 1);
 }
 
-.save-btn {
-  font-family: 'Cinzel', serif;
-  font-size: 0.85rem;
-  padding: 8px 16px;
-  background: transparent;
-  color: #d8b4fe;
-  border: 1px solid rgba(216, 180, 254, 0.4);
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.save-btn:hover:not(:disabled) {
-  border-color: #d8b4fe;
-  background: rgba(168, 85, 247, 0.2);
-}
-
-.save-btn:disabled {
-  color: #a855f7;
-  border-color: transparent;
-  cursor: default;
-}
-
-/* Favourites Section */
-.favorites-section {
-  width: 100%;
-  margin-top: 20px;
-  text-align: left;
-}
-
-.favorites-section h2 {
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-  color: #c084fc;
-  border-bottom: 1px solid rgba(168, 85, 247, 0.3);
-  padding-bottom: 8px;
-}
-
-.empty-text {
-  font-family: 'Crimson Pro', serif;
-  font-style: italic;
-  color: #8b7ca8;
-  font-size: 1rem;
-}
-
-.favorites-list {
-  list-style: none;
-  padding: 0;
-  margin: 12px 0 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.favorite-item {
-  background: rgba(30, 14, 52, 0.6);
-  border: 1px solid rgba(168, 85, 247, 0.25);
-  border-radius: 8px;
-  padding: 12px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-}
-
-.fav-category {
-  font-size: 0.75rem;
-  color: #a855f7;
-  font-weight: 700;
-  margin-right: 8px;
-}
-
-.fav-text {
-  font-family: 'Crimson Pro', serif;
-  font-style: italic;
-  font-size: 1.05rem;
-  color: #ede9fe;
-}
-
-.remove-btn {
-  background: transparent;
-  border: none;
-  color: #9333ea;
-  font-size: 1rem;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 4px;
-  transition: all 0.2s;
-}
-
-.remove-btn:hover {
-  color: #f43f5e;
+/* Push stage content down slightly so it sits nicely below the top valance */
+.oracle-wrapper {
+  padding-top: 110px;
+  z-index: 10;
 }
