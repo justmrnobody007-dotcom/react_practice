@@ -1,48 +1,53 @@
-/* === THEATRE STAGE & STRIPED BACKDROP (Image 1) === */
-.theatre-stage {
-  position: relative;
-  width: 100vw;
-  min-height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Crimson+Pro:ital,wght@0,300;1,300;1,400&display=swap');
+
+/* === BASE PAGE SETUP === */
+body {
+  margin: 0;
+  background-color: #0b0713;
+  color: #e9e3f3;
+  font-family: 'Cinzel', serif;
   overflow-x: hidden;
-  display: flex;
-  justify-content: center;
-  /* Vintage dark purple vertical carnival stripes behind the curtains */
-  background: repeating-linear-gradient(90deg,
-      #140624 0px,
-      #140624 48px,
-      #1f0b38 48px,
-      #1f0b38 96px);
-  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.9);
 }
 
-/* === TOP DRAPED VALANCE === */
+/* Give room to scroll so curtains can part smoothly */
+.theatre-stage {
+  position: relative;
+  min-height: 220vh;
+  /* Allows scrolling */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Deep moody background with very subtle vignette */
+  background: radial-gradient(circle at 50% 30%, #170d26 0%, #0c0616 70%, #06030a 100%);
+}
+
+/* === TOP DRAPED VALANCE (Subtle, desaturated velvet) === */
 .curtain-valance {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 110px;
+  height: 85px;
   display: flex;
   z-index: 30;
   pointer-events: none;
-  border-top: 10px solid #3b3345;
-  /* Vintage stone arch trim */
+  border-top: 5px solid #201333;
 }
 
 .valance-drape {
   flex: 1;
   height: 100%;
-  background: repeating-linear-gradient(90deg,
-      #3b0d54 0%,
-      #5b187b 8%,
-      #240636 16%);
+  background: linear-gradient(180deg,
+      #59384e 0%,
+      #462b3f 65%,
+      #291925 100%);
   border-radius: 0 0 50% 50%;
-  border-bottom: 4px solid #a855f7;
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(197, 139, 164, 0.55);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
 }
 
 .center-drape {
-  height: 85%;
+  height: 75%;
   position: relative;
   display: flex;
   justify-content: center;
@@ -50,95 +55,367 @@
 }
 
 .peeking-eye {
-  font-size: 2rem;
-  transform: translateY(18px);
-  filter: drop-shadow(0 0 8px #e9d5ff);
+  font-size: 1.4rem;
+  transform: translateY(12px);
+  opacity: 0.8;
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.4));
 }
 
-/* === LEFT & RIGHT VELVET CURTAINS === */
+/* === SLIDING VELVET CURTAINS === */
+
 .curtain-panel {
   position: fixed;
   top: 0;
   bottom: 0;
   width: 52vw;
   z-index: 20;
-  /* Pleated purple velvet texture using repeating gradients */
-  background: repeating-linear-gradient(90deg,
-      #2a0845 0px,
-      #4c1273 30px,
-      #681b99 55px,
-      #370b54 85px,
-      #1d042e 110px);
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.95);
-  transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Velvet base + natural vertical fabric folds */
+  background:
+    repeating-linear-gradient(90deg,
+      rgba(20, 8, 18, 0.38) 0px,
+      rgba(197, 139, 164, 0.12) 12px,
+      rgba(70, 43, 63, 0.15) 24px,
+      rgba(20, 8, 18, 0.30) 38px,
+      rgba(197, 139, 164, 0.10) 52px),
+    linear-gradient(90deg,
+      #291925 0%,
+      #462b3f 25%,
+      #59384e 50%,
+      #462b3f 75%,
+      #291925 100%);
+
+  box-shadow:
+    inset -18px 0 25px rgba(0, 0, 0, 0.45),
+    inset 18px 0 25px rgba(0, 0, 0, 0.2),
+    0 0 40px rgba(0, 0, 0, 0.9);
+
+  transition: transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Subtle light catching the velvet */
+.curtain-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(90deg,
+      transparent 10%,
+      rgba(197, 139, 164, 0.18) 25%,
+      transparent 38%,
+      rgba(197, 139, 164, 0.10) 55%,
+      transparent 72%,
+      rgba(20, 8, 18, 0.25) 90%);
+
+  pointer-events: none;
+}
+
+/* Dark, heavy bottom edge */
+.curtain-panel::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 35px;
+
+  background: linear-gradient(to bottom,
+      transparent,
+      rgba(0, 0, 0, 0.55));
 }
 
 .curtain-left {
   left: 0;
-  border-right: 4px solid #c084fc;
+  border-right: 2px solid rgba(212, 175, 55, 0.25);
+  transform-origin: left center;
 }
 
 .curtain-right {
   right: 0;
-  border-left: 4px solid #c084fc;
+  border-left: 2px solid rgba(212, 175, 55, 0.25);
+  transform-origin: right center;
 }
 
-/* When .curtains-open is added, pull curtains to the sides like Image 1 */
+/* Parted Curtains */
 .theatre-stage.curtains-open .curtain-left {
-  transform: translateX(-82%) rotate(-3deg);
-  border-bottom-right-radius: 120px;
+  transform: translateX(-88%);
 }
 
 .theatre-stage.curtains-open .curtain-right {
-  transform: translateX(82%) rotate(3deg);
-  border-bottom-left-radius: 120px;
+  transform: translateX(88%);
 }
 
-/* === HERO OVERLAY BEFORE CURTAINS OPEN === */
-.curtain-overlay {
+/* === HERO LANDING (Before Scrolling) === */
+.hero-cover {
   position: fixed;
-  inset: 0;
+  top: 35vh;
   z-index: 25;
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hero-cover.faded {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.hero-symbol {
+  color: #d4af37;
+  font-size: 0.9rem;
+  letter-spacing: 4px;
+}
+
+.hero-title {
+  font-size: 2.4rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: #f1ebfa;
+  margin: 12px 0 8px 0;
+  text-shadow: 0 0 20px rgba(196, 181, 253, 0.25);
+}
+
+.scroll-indicator {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #a78bfa;
+  opacity: 0.75;
+  animation: pulse 2.2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0.85;
+    transform: translateY(4px);
+  }
+}
+
+/* === MAIN REVEALED CONTENT (TAROT & ORB) === */
+.oracle-wrapper {
+  margin-top: 90vh;
+  /* Sits naturally after scrolling down */
+  width: 100%;
+  max-width: 460px;
+  padding: 20px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+}
+
+.oracle-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 24px;
-  background: radial-gradient(circle, rgba(16, 4, 28, 0.55) 0%, rgba(0, 0, 0, 0.8) 100%);
-  padding: 20px;
+}
+
+/* === GLOWING CRYSTAL ORB (Image 2) === */
+.mystic-orb-container {
+  position: relative;
+  margin-bottom: -70px;
+  /* Tarot card overlaps over orb */
+  z-index: 1;
+}
+
+.mystic-orb {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  /* Glowing magenta/violet aura from Image 2 */
+  background: radial-gradient(circle at 40% 35%, #e879f9 0%, #a855f7 40%, #581c87 75%, #1f0738 100%);
+  box-shadow: 0 0 50px rgba(192, 132, 252, 0.45), inset 0 0 25px rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.orb-sparkle {
+  position: absolute;
+  color: #f5d0fe;
+  font-size: 1.1rem;
+  filter: drop-shadow(0 0 5px #e879f9);
+}
+
+.sparkle-top {
+  top: -10px;
+  right: 15px;
+}
+
+.sparkle-left {
+  bottom: 30px;
+  left: -15px;
+}
+
+/* === TAROT CARD (Image 2) === */
+.tarot-card {
+  width: 100%;
+  background: #140b22;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  /* Antique gold rim */
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 30px rgba(126, 34, 206, 0.15);
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.tarot-inner-border {
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 8px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
   text-align: center;
 }
 
-.hero-curtain-title {
-  font-size: 3rem;
-  color: #f3e8ff;
-  text-shadow: 0 0 25px #a855f7, 0 4px 10px #000;
-  letter-spacing: 4px;
+.tarot-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #d4af37;
+}
+
+.tarot-art {
+  margin: 10px 0;
+  font-size: 1.8rem;
+  color: #f43f5e;
+  filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.5));
+}
+
+.tarot-prophecy {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: #f5f3ff;
   margin: 0;
 }
 
-.enter-stage-btn {
+/* Buttons */
+.consult-btn {
   font-family: 'Cinzel', serif;
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 0.95rem;
   letter-spacing: 2px;
-  padding: 16px 38px;
-  background: linear-gradient(135deg, #581c87, #9333ea);
-  color: #faf5ff;
-  border: 2px solid #e9d5ff;
-  border-radius: 40px;
+  padding: 14px 28px;
+  background: #1d0f33;
+  color: #e9d5ff;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 25px;
   cursor: pointer;
-  box-shadow: 0 0 30px rgba(168, 85, 247, 0.8);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
 }
 
-.enter-stage-btn:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 45px rgba(216, 180, 254, 1);
+.consult-btn:hover {
+  background: #2a154a;
+  border-color: #d4af37;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
 }
 
-/* Push stage content down slightly so it sits nicely below the top valance */
-.oracle-wrapper {
-  padding-top: 110px;
-  z-index: 10;
+.save-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  padding: 7px 16px;
+  background: transparent;
+  color: #c4b5fd;
+  border: 1px solid rgba(196, 181, 253, 0.3);
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.save-btn:hover:not(:disabled) {
+  border-color: #d4af37;
+  color: #d4af37;
+}
+
+.save-btn:disabled {
+  color: #6b5c82;
+  border-color: transparent;
+  cursor: default;
+}
+
+/* Favourites Section */
+.favorites-section {
+  width: 100%;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.favorites-section h2 {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: #d4af37;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 6px;
+}
+
+.empty-text {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  color: #6f5f88;
+  font-size: 0.95rem;
+}
+
+.favorites-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.favorite-item {
+  background: rgba(22, 12, 36, 0.7);
+  border: 1px solid rgba(196, 181, 253, 0.15);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.fav-category {
+  font-size: 0.7rem;
+  color: #d4af37;
+  letter-spacing: 1px;
+  margin-right: 8px;
+}
+
+.fav-text {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #e9e3f3;
+}
+
+.remove-btn {
+  background: transparent;
+  border: none;
+  color: #8b79a8;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.remove-btn:hover {
+  color: #f43f5e;
 }
