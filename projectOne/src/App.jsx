@@ -5,12 +5,12 @@ import './App.css';
 function App() {
   const [currentFortune, setCurrentFortune] = useState(FORTUNES[0]);
   const [favorites, setFavorites] = useState([]);
+  // 1. New state to track prediction history
+  const [history, setHistory] = useState([FORTUNES[0]]);
   const [isCurtainOpen, setIsCurtainOpen] = useState(false);
 
-  // Listen to window scroll to smoothly push curtains open/closed
   useEffect(() => {
     function handleScroll() {
-      // If scrolled down more than 40px, part the curtains
       if (window.scrollY > 40) {
         setIsCurtainOpen(true);
       } else {
@@ -24,7 +24,12 @@ function App() {
 
   function getRandomFortune() {
     const randomIndex = Math.floor(Math.random() * FORTUNES.length);
-    setCurrentFortune(FORTUNES[randomIndex]);
+    const nextFortune = FORTUNES[randomIndex];
+
+    setCurrentFortune(nextFortune);
+
+    // 2. Prepend the new draw to the top of our history
+    setHistory(prevHistory => [nextFortune, ...prevHistory]);
   }
 
   function handleSaveFavorite() {
@@ -38,11 +43,16 @@ function App() {
     setFavorites(favorites.filter(fav => fav.id !== id));
   }
 
+  // 3. Clear all recorded history
+  function handleClearHistory() {
+    setHistory([]);
+  }
+
   const isCurrentFavorite = favorites.some(fav => fav.id === currentFortune.id);
 
   return (
     <div className={`theatre-stage ${isCurtainOpen ? 'curtains-open' : ''}`}>
-      {/* Top Valance with Subtle Eye */}
+      {/* Top Valance */}
       <div className="curtain-valance">
         <div className="valance-drape left-drape"></div>
         <div className="valance-drape center-drape">
@@ -51,21 +61,22 @@ function App() {
         <div className="valance-drape right-drape"></div>
       </div>
 
-      {/* Velvet Curtains (Left & Right) */}
+      {/* Velvet Curtains */}
       <div className="curtain-panel curtain-left"></div>
       <div className="curtain-panel curtain-right"></div>
 
-      {/* Hero Welcome (Fades out when scrolled) */}
+      {/* Hero Cover */}
       <header className={`hero-cover ${isCurtainOpen ? 'faded' : ''}`}>
         <span className="hero-symbol">✦ ☽ ✦</span>
         <h1 className="hero-title">The Unreliable Oracle</h1>
+        <p className="scroll-indicator">↓ Scroll down to part the velvet veil ↓</p>
       </header>
 
-      {/* Revealed Sanctuary: Tarot Card & Glowing Orb (Image 2) */}
+      {/* Main Content */}
       <main className="oracle-wrapper">
         <div className="oracle-container">
 
-          {/* Glowing Crystal Orb Behind the Card */}
+          {/* Harmonic Dusty-Rose Mystic Orb */}
           <div className="mystic-orb-container">
             <div className="mystic-orb">
               <div className="orb-sparkle sparkle-top">✧</div>
@@ -73,7 +84,7 @@ function App() {
             </div>
           </div>
 
-          {/* Aesthetic Tarot Card */}
+          {/* Tarot Card */}
           <div className="tarot-card">
             <div className="tarot-inner-border">
               <div className="tarot-header">
@@ -102,18 +113,20 @@ function App() {
             ✦ Draw Another Card ✦
           </button>
 
-          {/* Favourites list */}
-          <section className="favorites-section">
-            <h2>Preserved Cards ({favorites.length})</h2>
+          {/* Saved Favourites */}
+          <section className="drawer-section">
+            <div className="section-header">
+              <h2>Preserved Cards ({favorites.length})</h2>
+            </div>
             {favorites.length === 0 ? (
               <p className="empty-text">No prophecies preserved yet.</p>
             ) : (
-              <ul className="favorites-list">
+              <ul className="drawer-list">
                 {favorites.map(fav => (
-                  <li key={fav.id} className="favorite-item">
+                  <li key={fav.id} className="drawer-item">
                     <div>
-                      <span className="fav-category">[{fav.category}]</span>
-                      <span className="fav-text">"{fav.text}"</span>
+                      <span className="item-category">[{fav.category}]</span>
+                      <span className="item-text">"{fav.text}"</span>
                     </div>
                     <button
                       className="remove-btn"
@@ -126,6 +139,33 @@ function App() {
               </ul>
             )}
           </section>
+
+          {/* 4. Prediction History Section */}
+          <section className="drawer-section">
+            <div className="section-header">
+              <h2>The Chronicle of Draws ({history.length})</h2>
+              {history.length > 0 && (
+                <button className="clear-btn" onClick={handleClearHistory}>
+                  Clear
+                </button>
+              )}
+            </div>
+            {history.length === 0 ? (
+              <p className="empty-text">The chronicle is silent.</p>
+            ) : (
+              <ul className="drawer-list history-list">
+                {history.map((item, index) => (
+                  <li key={index} className="drawer-item history-item">
+                    <div>
+                      <span className="item-category">[{item.category}]</span>
+                      <span className="item-text">"{item.text}"</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+
         </div>
       </main>
     </div>

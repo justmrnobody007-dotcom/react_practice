@@ -3,25 +3,24 @@
 /* === BASE PAGE SETUP === */
 body {
   margin: 0;
-  background-color: #0b0713;
-  color: #e9e3f3;
+  background-color: #120911;
+  color: #f1e6ec;
   font-family: 'Cinzel', serif;
   overflow-x: hidden;
 }
 
-/* Give room to scroll so curtains can part smoothly */
+/* Room to scroll so curtains part smoothly */
 .theatre-stage {
   position: relative;
   min-height: 220vh;
-  /* Allows scrolling */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Deep moody background with very subtle vignette */
-  background: radial-gradient(circle at 50% 30%, #170d26 0%, #0c0616 70%, #06030a 100%);
+  /* Deep plum/wine vignette */
+  background: radial-gradient(circle at 50% 30%, #20101b 0%, #120911 65%, #090408 100%);
 }
 
-/* === TOP DRAPED VALANCE (Subtle, desaturated velvet) === */
+/* === TOP DRAPED VALANCE === */
 .curtain-valance {
   position: fixed;
   top: 0;
@@ -31,16 +30,13 @@ body {
   display: flex;
   z-index: 30;
   pointer-events: none;
-  border-top: 5px solid #201333;
+  border-top: 5px solid #291925;
 }
 
 .valance-drape {
   flex: 1;
   height: 100%;
-  background: linear-gradient(180deg,
-      #59384e 0%,
-      #462b3f 65%,
-      #291925 100%);
+  background: linear-gradient(180deg, #59384e 0%, #462b3f 65%, #291925 100%);
   border-radius: 0 0 50% 50%;
   border-bottom: 1px solid rgba(197, 139, 164, 0.55);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
@@ -57,12 +53,11 @@ body {
 .peeking-eye {
   font-size: 1.4rem;
   transform: translateY(12px);
-  opacity: 0.8;
-  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.4));
+  opacity: 0.85;
+  filter: drop-shadow(0 0 6px rgba(197, 139, 164, 0.6));
 }
 
 /* === SLIDING VELVET CURTAINS === */
-
 .curtain-panel {
   position: fixed;
   top: 0;
@@ -70,7 +65,6 @@ body {
   width: 52vw;
   z-index: 20;
 
-  /* Velvet base + natural vertical fabric folds */
   background:
     repeating-linear-gradient(90deg,
       rgba(20, 8, 18, 0.38) 0px,
@@ -95,12 +89,10 @@ body {
   overflow: hidden;
 }
 
-/* Subtle light catching the velvet */
 .curtain-panel::before {
   content: "";
   position: absolute;
   inset: 0;
-
   background: linear-gradient(90deg,
       transparent 10%,
       rgba(197, 139, 164, 0.18) 25%,
@@ -108,11 +100,9 @@ body {
       rgba(197, 139, 164, 0.10) 55%,
       transparent 72%,
       rgba(20, 8, 18, 0.25) 90%);
-
   pointer-events: none;
 }
 
-/* Dark, heavy bottom edge */
 .curtain-panel::after {
   content: "";
   position: absolute;
@@ -120,25 +110,21 @@ body {
   left: 0;
   width: 100%;
   height: 35px;
-
-  background: linear-gradient(to bottom,
-      transparent,
-      rgba(0, 0, 0, 0.55));
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.55));
 }
 
 .curtain-left {
   left: 0;
-  border-right: 2px solid rgba(212, 175, 55, 0.25);
+  border-right: 2px solid rgba(197, 139, 164, 0.4);
   transform-origin: left center;
 }
 
 .curtain-right {
   right: 0;
-  border-left: 2px solid rgba(212, 175, 55, 0.25);
+  border-left: 2px solid rgba(197, 139, 164, 0.4);
   transform-origin: right center;
 }
 
-/* Parted Curtains */
 .theatre-stage.curtains-open .curtain-left {
   transform: translateX(-88%);
 }
@@ -147,7 +133,7 @@ body {
   transform: translateX(88%);
 }
 
-/* === HERO LANDING (Before Scrolling) === */
+/* === HERO LANDING === */
 .hero-cover {
   position: fixed;
   top: 35vh;
@@ -163,7 +149,7 @@ body {
 }
 
 .hero-symbol {
-  color: #d4af37;
+  color: #c58ba4;
   font-size: 0.9rem;
   letter-spacing: 4px;
 }
@@ -172,17 +158,17 @@ body {
   font-size: 2.4rem;
   font-weight: 500;
   letter-spacing: 3px;
-  color: #f1ebfa;
+  color: #f7eff3;
   margin: 12px 0 8px 0;
-  text-shadow: 0 0 20px rgba(196, 181, 253, 0.25);
+  text-shadow: 0 0 20px rgba(197, 139, 164, 0.3);
 }
 
 .scroll-indicator {
   font-family: 'Crimson Pro', serif;
   font-style: italic;
   font-size: 1.05rem;
-  color: #a78bfa;
-  opacity: 0.75;
+  color: #c58ba4;
+  opacity: 0.8;
   animation: pulse 2.2s infinite ease-in-out;
 }
 
@@ -195,15 +181,14 @@ body {
   }
 
   50% {
-    opacity: 0.85;
+    opacity: 0.9;
     transform: translateY(4px);
   }
 }
 
-/* === MAIN REVEALED CONTENT (TAROT & ORB) === */
+/* === MAIN REVEALED CONTENT === */
 .oracle-wrapper {
   margin-top: 90vh;
-  /* Sits naturally after scrolling down */
   width: 100%;
   max-width: 460px;
   padding: 20px;
@@ -217,32 +202,31 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 22px;
 }
 
-/* === GLOWING CRYSTAL ORB (Image 2) === */
+/* === HARMONIC DUSTY-ROSE CRYSTAL ORB === */
 .mystic-orb-container {
   position: relative;
-  margin-bottom: -70px;
-  /* Tarot card overlaps over orb */
+  margin-bottom: -65px;
   z-index: 1;
 }
 
 .mystic-orb {
-  width: 180px;
-  height: 180px;
+  width: 170px;
+  height: 170px;
   border-radius: 50%;
-  /* Glowing magenta/violet aura from Image 2 */
-  background: radial-gradient(circle at 40% 35%, #e879f9 0%, #a855f7 40%, #581c87 75%, #1f0738 100%);
-  box-shadow: 0 0 50px rgba(192, 132, 252, 0.45), inset 0 0 25px rgba(255, 255, 255, 0.3);
+  /* Blended from rosewood highlight into deep velvet plum */
+  background: radial-gradient(circle at 40% 35%, #e0a3be 0%, #a45f82 35%, #59384e 70%, #200f1c 100%);
+  box-shadow: 0 0 45px rgba(197, 139, 164, 0.45), inset 0 0 20px rgba(255, 255, 255, 0.25);
   position: relative;
 }
 
 .orb-sparkle {
   position: absolute;
-  color: #f5d0fe;
+  color: #faeaf1;
   font-size: 1.1rem;
-  filter: drop-shadow(0 0 5px #e879f9);
+  filter: drop-shadow(0 0 5px #c58ba4);
 }
 
 .sparkle-top {
@@ -251,25 +235,24 @@ body {
 }
 
 .sparkle-left {
-  bottom: 30px;
-  left: -15px;
+  bottom: 25px;
+  left: -12px;
 }
 
-/* === TAROT CARD (Image 2) === */
+/* === TAROT CARD === */
 .tarot-card {
   width: 100%;
-  background: #140b22;
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  /* Antique gold rim */
+  background: #1e111a;
+  border: 1px solid rgba(197, 139, 164, 0.5);
   border-radius: 14px;
   padding: 14px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 30px rgba(126, 34, 206, 0.15);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(89, 56, 78, 0.3);
   box-sizing: border-box;
   z-index: 2;
 }
 
 .tarot-inner-border {
-  border: 1px solid rgba(212, 175, 55, 0.25);
+  border: 1px solid rgba(197, 139, 164, 0.25);
   border-radius: 8px;
   padding: 24px 20px;
   display: flex;
@@ -285,14 +268,14 @@ body {
   justify-content: space-between;
   font-size: 0.75rem;
   letter-spacing: 2px;
-  color: #d4af37;
+  color: #c58ba4;
 }
 
 .tarot-art {
-  margin: 10px 0;
-  font-size: 1.8rem;
-  color: #f43f5e;
-  filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.5));
+  margin: 8px 0;
+  font-size: 1.6rem;
+  color: #c58ba4;
+  filter: drop-shadow(0 0 8px rgba(197, 139, 164, 0.4));
 }
 
 .tarot-prophecy {
@@ -300,91 +283,117 @@ body {
   font-style: italic;
   font-size: 1.35rem;
   line-height: 1.5;
-  color: #f5f3ff;
+  color: #f7eff3;
   margin: 0;
 }
 
-/* Buttons */
+/* === BUTTONS === */
 .consult-btn {
   font-family: 'Cinzel', serif;
   font-size: 0.95rem;
   letter-spacing: 2px;
-  padding: 14px 28px;
-  background: #1d0f33;
-  color: #e9d5ff;
-  border: 1px solid rgba(212, 175, 55, 0.5);
+  padding: 13px 28px;
+  background: #2b1725;
+  color: #f5e8ef;
+  border: 1px solid rgba(197, 139, 164, 0.5);
   border-radius: 25px;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
 
 .consult-btn:hover {
-  background: #2a154a;
-  border-color: #d4af37;
+  background: #46253c;
+  border-color: #c58ba4;
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  box-shadow: 0 0 20px rgba(197, 139, 164, 0.4);
 }
 
 .save-btn {
   font-family: 'Cinzel', serif;
   font-size: 0.75rem;
   letter-spacing: 1px;
-  padding: 7px 16px;
+  padding: 6px 14px;
   background: transparent;
-  color: #c4b5fd;
-  border: 1px solid rgba(196, 181, 253, 0.3);
+  color: #c58ba4;
+  border: 1px solid rgba(197, 139, 164, 0.35);
   border-radius: 18px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .save-btn:hover:not(:disabled) {
-  border-color: #d4af37;
-  color: #d4af37;
+  border-color: #e0a3be;
+  color: #faeaf1;
+  background: rgba(197, 139, 164, 0.15);
 }
 
 .save-btn:disabled {
-  color: #6b5c82;
+  color: #5c3e4f;
   border-color: transparent;
   cursor: default;
 }
 
-/* Favourites Section */
-.favorites-section {
+/* === DRAWER SECTIONS (Favourites & History) === */
+.drawer-section {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
   text-align: left;
 }
 
-.favorites-section h2 {
-  font-size: 1rem;
-  letter-spacing: 2px;
-  color: #d4af37;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(197, 139, 164, 0.25);
   padding-bottom: 6px;
+}
+
+.section-header h2 {
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  color: #c58ba4;
+  margin: 0;
+}
+
+.clear-btn {
+  background: transparent;
+  border: 1px solid rgba(197, 139, 164, 0.3);
+  color: #c58ba4;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  padding: 2px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-btn:hover {
+  color: #f87171;
+  border-color: #f87171;
 }
 
 .empty-text {
   font-family: 'Crimson Pro', serif;
   font-style: italic;
-  color: #6f5f88;
+  color: #6d4b5e;
   font-size: 0.95rem;
+  margin: 8px 0 0 0;
 }
 
-.favorites-list {
+.drawer-list {
   list-style: none;
   padding: 0;
-  margin: 12px 0 0 0;
+  margin: 10px 0 0 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
-.favorite-item {
-  background: rgba(22, 12, 36, 0.7);
-  border: 1px solid rgba(196, 181, 253, 0.15);
+.drawer-item {
+  background: rgba(30, 16, 26, 0.75);
+  border: 1px solid rgba(197, 139, 164, 0.2);
   border-radius: 8px;
   padding: 10px 14px;
   display: flex;
@@ -393,24 +402,34 @@ body {
   gap: 10px;
 }
 
-.fav-category {
+.history-item {
+  opacity: 0.9;
+}
+
+.history-list {
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.item-category {
   font-size: 0.7rem;
-  color: #d4af37;
+  color: #c58ba4;
   letter-spacing: 1px;
   margin-right: 8px;
 }
 
-.fav-text {
+.item-text {
   font-family: 'Crimson Pro', serif;
   font-style: italic;
   font-size: 0.95rem;
-  color: #e9e3f3;
+  color: #ede2e8;
 }
 
 .remove-btn {
   background: transparent;
   border: none;
-  color: #8b79a8;
+  color: #8c6177;
   cursor: pointer;
   font-size: 0.9rem;
   transition: color 0.2s;
