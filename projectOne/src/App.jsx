@@ -69,7 +69,6 @@ function App() {
       <header className={`hero-cover ${isCurtainOpen ? 'faded' : ''}`}>
         <span className="hero-symbol">✦ ☽ ✦</span>
         <h1 className="hero-title">The Unreliable Oracle</h1>
-        <p className="scroll-indicator">↓ Scroll down to part the velvet veil ↓</p>
       </header>
 
       {/* Main Content */}
