@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap');
+
 *,
 *::before,
 *::after {
@@ -9,6 +11,9 @@ body {
   margin: 0;
   padding: 0;
   background-color: #faf7f2;
+  background-image: url('./assets/paper-bg.jpg');
+  background-repeat: repeat;
+  background-size: 450px auto;
   color: #231f20;
   font-family: 'Fredoka', cursive, sans-serif;
 }
@@ -19,8 +24,113 @@ body {
   flex-direction: column;
 }
 
-.crust-selector,
 .cart-page {
+  flex: 1;
   padding: 3rem 10%;
 }
 
+.cart-card {
+  max-width: 720px;
+  background-color: #ffffff;
+  border: 3px solid #231f20;
+  border-radius: 20px;
+  box-shadow: 5px 6px 0px #231f20;
+  padding: 2rem;
+}
+
+.cart-card h2 {
+  margin: 0 0 1.25rem;
+  font-size: 2rem;
+  text-transform: lowercase;
+}
+
+.cart-empty {
+  margin: 0 0 1.5rem;
+  font-size: 1.1rem;
+}
+
+.cart-items {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  background-color: #faf7f2;
+  border: 2px solid #231f20;
+  border-radius: 14px;
+}
+
+.cart-item-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cart-item-img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.cart-item-title {
+  margin: 0;
+  font-size: 1.15rem;
+  text-transform: lowercase;
+}
+
+.cart-item-meta {
+  margin: 0.2rem 0 0;
+  font-size: 0.92rem;
+  color: #555;
+  text-transform: lowercase;
+}
+
+.cart-item-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e63946;
+}
+
+.cart-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 2px dashed #231f20;
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.cart-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #e63946;
+  border: 3px solid #231f20;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 4px 5px 0px #231f20;
+  text-transform: lowercase;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.cart-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 7px 0px #231f20;
+  background-color: #d62828;
+}
