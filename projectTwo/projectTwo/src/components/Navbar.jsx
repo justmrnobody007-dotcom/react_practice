@@ -1,5 +1,5 @@
-import cartIcon from './assets/cart.png';
-import './Navbar.css';
+import cartIcon from '../assets/cart.png';
+import '../Navbar.css';
 
 function Navbar({ onNavigate, cartCount }) {
   return (

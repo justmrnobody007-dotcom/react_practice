@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Pizza from './pages/Pizza';
-import CrustSelector from './components/CrustSelector';
+import PizzaBuilder from './pages/PizzaBuilder';
 import './App.css';
 
 export default function App() {
@@ -18,7 +18,7 @@ export default function App() {
       )}
 
       {currentPage === 'build' && (
-        <CrustSelector />
+        <PizzaBuilder />
       )}
 
       {currentPage === 'cart' && (

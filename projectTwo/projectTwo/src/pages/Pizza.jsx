@@ -1,5 +1,5 @@
-import './Pizza.css'; 
-import mainPizza from './assets/mainPizza.png';
+import '../Pizza.css'; 
+import mainPizza from '../assets/mainPizza.png';
 
 function Pizza({ onStart }) {
   return (
