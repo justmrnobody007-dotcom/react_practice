@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Navbar from './Navbar';
-import Pizza from './Pizza';
-import CrustSelector from './CrustSelector';
+import Navbar from './components/Navbar';
+import Pizza from './pages/Pizza';
+import CrustSelector from './components/CrustSelector';
 import './App.css';
 
 export default function App() {
