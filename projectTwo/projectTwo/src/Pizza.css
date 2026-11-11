@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap');
+
+.pizza-hero-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+  box-sizing: border-box;
+
+  /* Paper texture background */
+  background-color: #faf7f2;
+  background-image: url('./assets/paper-bg.jpg');
+  background-repeat: repeat;
+  background-size: 450px auto;
+  overflow: hidden;
+}
+
+/* Left side floating content */
+.hero-left {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  animation: floatLeft 4.5s ease-in-out infinite alternate;
+}
+
+.main-title {
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  line-height: 1.05;
+  color: #231f20;
+  text-transform: lowercase;
+  margin: 0;
+}
+
+/* Floating start button */
+.start-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2.2rem;
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #e63946;
+  border: 3px solid #231f20;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 4px 5px 0px #231f20;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  animation: floatBtn 3.8s ease-in-out infinite alternate;
+}
+
+.start-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 5px 8px 0px #231f20;
+  background-color: #d62828;
+}
+
+.start-btn:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 2px 2px 0px #231f20;
+}
+
+/* Right side floating pizza */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-pizza-img {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.18));
+  animation: floatRight 5.5s ease-in-out infinite alternate;
+}
+
+/* Floating Keyframes */
+@keyframes floatLeft {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
+}
+
+@keyframes floatBtn {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-6px); }
+}
+
+@keyframes floatRight {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(2deg); }
+  100% { transform: translateY(6px) rotate(-1.5deg); }
+}
+
+/* Responsive adjustment */
+@media (max-width: 850px) {
+  .pizza-hero-container {
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .hero-left {
+    align-items: center;
+  }
+
+  .hero-pizza-img {
+    max-width: 280px;
+  }
+}
