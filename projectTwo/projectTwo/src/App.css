@@ -1,0 +1,26 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #faf7f2;
+  color: #231f20;
+  font-family: 'Fredoka', cursive, sans-serif;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.crust-selector,
+.cart-page {
+  padding: 3rem 10%;
+}
+

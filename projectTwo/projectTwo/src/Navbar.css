@@ -1,0 +1,79 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 10%;
+  background-color: #faf7f2;
+  border-bottom: 3px solid #231f20;
+  font-family: 'Fredoka', cursive, sans-serif;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #231f20;
+  text-decoration: none;
+}
+
+.nav-babies {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-babies a {
+  color: #231f20;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.nav-babies a:hover {
+  color: #e63946;
+}
+
+.cart-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.cart-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* The bouncing notification badge */
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  background-color: #e63946;
+  color: #ffffff;
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #231f20;
+  animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

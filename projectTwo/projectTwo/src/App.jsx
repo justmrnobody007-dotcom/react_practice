@@ -1,12 +1,32 @@
-import Pizza from './Pizza.jsx'
+import { useState } from 'react';
+import Navbar from './Navbar';
+import Pizza from './Pizza';
+import CrustSelector from './CrustSelector';
+import './App.css';
 
-function App(){
+export default function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+  const [cartCount] = useState(0);
 
-  return(
-    <div>
-      <Pizza />
+  return (
+    <div className="app-container">
+      <Navbar onNavigate={(page) => setCurrentPage(page)} cartCount={cartCount} />
+
+      {/* Pass a function to Pizza so the start button switches to 'build' */}
+      {currentPage === 'home' && (
+        <Pizza onStart={() => setCurrentPage('build')} />
+      )}
+
+      {currentPage === 'build' && (
+        <CrustSelector />
+      )}
+
+      {currentPage === 'cart' && (
+        <div className="cart-page">
+          <h2>Your Cart</h2>
+          <p>{cartCount === 0 ? 'Your cart is empty.' : `${cartCount} item(s) in cart.`}</p>
+        </div>
+      )}
     </div>
   );
 }
-
-export default App

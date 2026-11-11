@@ -1,4 +1,3 @@
-import React from 'react';
 import './Pizza.css'; 
 import mainPizza from './assets/mainPizza.png';
 
