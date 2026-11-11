@@ -55,9 +55,6 @@ function App() {
       {/* Top Valance */}
       <div className="curtain-valance">
         <div className="valance-drape left-drape"></div>
-        <div className="valance-drape center-drape">
-          <span className="peeking-eye">👁</span>
-        </div>
         <div className="valance-drape right-drape"></div>
       </div>
 
